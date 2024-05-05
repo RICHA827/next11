@@ -1,24 +1,15 @@
 'use client';
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Roboto} from "next/font/google";
+
+const roboto = Roboto({subsets: ['latin'], weight: "500"})
 
 const Home = () => {
-  const router = useRouter();
-
-  let navigate = (page)=> {
-    router.push(page);
-  };
-
   return (
-    <section>
-      <h1>useRouter</h1>
-      <Link href="/about">About page</Link> <br />
-      <button 
-      onClick = {() => navigate("about")}>Go to about page</button>
-      <br />
-      <button onClick={() => navigate("portfolio")}> Go to portfolio </button>
-      </section>
-  
+   <section>
+    <h1>Google Fonts</h1>
+    <h2 className={roboto.className}>Helloo its roboto font</h2>
+
+   </section>
   )
 };
 

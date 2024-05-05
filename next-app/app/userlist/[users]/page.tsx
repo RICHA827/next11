@@ -1,7 +1,9 @@
 'use client'
 
-const Users = ({params}) => {
+import { log } from "console"
 
+const Users = ({params}) => {
+  //console.log(params);
   return (
     <div>
         Information about {params.users} <br />
