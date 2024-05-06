@@ -2,7 +2,7 @@
 
 import { log } from "console"
 
-const Users = ({params}) => {
+const Users = ({params}:any) => {
   //console.log(params);
   return (
     <div>

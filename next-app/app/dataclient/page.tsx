@@ -1,25 +1,34 @@
 'use client'
 import {useState, useEffect} from 'react'
 
-const Data = () => {
-    const[product, setProduct] = useState([]);
+const Data: React.FC= () => {
+    const[product, setProduct] = useState<any>(null);
 
     useEffect(() => {
-        async function fetchData(){
-            let data = await fetch('https://jsonplaceholder.typicode.com/posts')
-            data = await data.json();
-            setProduct(data);
-        }
+        const fetchData = async() => {
+            try {
+              const response = await fetch("https://api.example.com/data");
+              const jsonData = await response.json();
+              setProduct(jsonData);
+            } catch(error){
+              console.error('Error fetching data:', error)
+            }
+        };
         fetchData();
-      }, [])
+      }, []);
+      
   return (
-    <ul>
-      {product?.map((p) => (
-        <li className='border m-5 py-2 px-4' key={p.id}>
-          {p.title}
-        </li>
-      ))}
-    </ul>
+    <div>
+      {product ? (
+        <ul>
+          {product.map((item: any) => (
+            <li key={item.id}>{item.name}</li>
+         ))}
+        </ul>
+      ) : (
+        <p>Loading....</p>
+      )}
+    </div>
   )
 }
 
